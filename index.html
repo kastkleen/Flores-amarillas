@@ -3,272 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un mensaje para ti 💛</title>
+    <title>Para Mi Amor ❤️</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            background-color: #050811;
-            font-family: 'Segoe UI', sans-serif;
-            overflow: hidden;
-            height: 100vh;
+            background: linear-gradient(180deg, #fffdf0 0%, #fff9c4 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #fff;
-        }
-        
-        /* FASE 1: INTRIGA ABSOLUTA */
-        #pantalla-intriga {
-            text-align: center;
-            z-index: 20;
-            transition: all 1s ease;
+            overflow-x: hidden;
             padding: 20px;
-        }
-        #pantalla-intriga p {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            color: #a0aec0;
-            letter-spacing: 1px;
-        }
-        .btn-toca-aqui {
-            background: transparent;
-            border: 2px solid #ffd700;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #ffd700;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
-            transition: all 0.3s;
-            text-transform: uppercase;
-        }
-        .btn-toca-aqui:active {
-            background: #ffd700;
-            color: #050811;
-            box-shadow: 0 0 25px #ffd700;
-        }
-
-        /* FASE 2: TEXTO ROMÁNTICO INICIAL */
-        #texto-inicial {
-            position: absolute;
-            font-size: 2.2rem;
-            color: #ffd700;
             text-align: center;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-            z-index: 15;
-            padding: 20px;
-            font-weight: bold;
-            display: none;
         }
-
-        /* FASE 3: CONTENEDOR DE LA CARTA */
-        #capa-carta {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
-            display: none;
-        }
-        .carta-contenido {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            padding: 30px 25px;
-            border-radius: 16px;
-            width: 88%;
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            backdrop-filter: blur(5px);
             max-width: 400px;
-            text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
-            max-height: 85vh;
-            overflow-y: auto;
-        }
-        .parrafo-carta {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            color: #f7fafc;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-        .frase-resaltada {
-            color: #ffd700;
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-top: 15px;
-            display: block;
-            opacity: 0;
-            transition: opacity 1.5s ease;
-        }
-        .poema-girasol {
-            font-style: italic;
-            color: #e2e8f0;
-            margin-top: 10px;
-            display: block;
-            opacity: 0;
-            transition: opacity 1.5s ease;
-        }
-
-        /* REVELACIÓN DE LA FLOR FINAL */
-        #girasol-final {
-            font-size: 5.5rem;
-            margin-top: 20px;
-            display: inline-block;
-            transform: scale(0);
-            transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* LLUVIA DE FLORES ANIMADAS */
-        #jardin-lluvia {
-            position: absolute;
             width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 5;
+            z-index: 10;
+            border: 2px solid #fff59d;
         }
-        .flor-cayendo {
+        h1 {
+            color: #fbc02d;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+        p {
+            color: #5d4037;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .flower {
+            font-size: 80px;
+            animation: pulse 2s infinite;
+            margin: 15px 0;
+            display: inline-block;
+        }
+        .video-container {
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+        .petalo {
             position: absolute;
-            font-size: 2rem;
-            animation: caerFiltro linear forwards;
-            opacity: 0;
+            top: -20px;
+            font-size: 20px;
+            z-index: 1;
+            pointer-events: none;
+            animation: caer linear forwards;
         }
-
-        /* ANIMACIONES */
-        @keyframes caerFiltro {
-            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-            15% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        @keyframes caer {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- REPRODUCTOR DE YOUTUBE OCULTO PARA LA MÚSICA -->
-    <div style="position: absolute; visibility: hidden; width: 0; height: 0;">
-        <div id="player"></div>
-    </div>
-
-    <!-- PÁGINA 1: INTRIGA TOTAL -->
-    <div id="pantalla-intriga">
-        <p>Te preparé algo...</p>
-        <button class="btn-toca-aqui" onclick="iniciarEfecto()">Toca aquí</button>
-    </div>
-
-    <!-- PÁGINA 2: TEXTO INICIAL REVELADO -->
-    <div id="texto-inicial">Feliz 21 de septiembre, mi amor. ❤️</div>
-
-    <!-- JARDÍN DE LLUVIA DE FLORES -->
-    <div id="jardin-lluvia"></div>
-
-    <!-- PÁGINA 3: TU CARTA Y LA FLOR FINAL -->
-    <div id="capa-carta">
-        <div class="carta-contenido">
-            <p class="parrafo-carta">Feliz día corazón, no me iba a olvidar de tus flores amarillas, a pesar de que estemos lejos, no es impedimento para darte unas flores amarillas, así que espero y te gusten demasiado.</p>
-            <p class="parrafo-carta">No olvides que te amo muchísimo, y que eres super increíble, realmente te aprecio demasiado.</p>
-            <p class="parrafo-carta">Gracias por todo, te amo mucho.</p>
-            
-            <span id="frase1" class="frase-resaltada">Eres como una...</span>
-            <span id="frase2" class="poema-girasol">Girasol: porque sin importar qué tan oscuro sea el día, siempre buscas la luz y llenas de un brillo hermoso todo a tu alrededor.🌻</span>
-            
-            <div id="girasol-final">🌻</div>
+    <div class="container">
+        <h1>¡Feliz 21 de Septiembre! 🌻</h1>
+        
+        <div class="flower">🌻</div>
+        
+        <p>Feliz día corazón, no me iba a olvidar de tus flores amarillas, a pesar de que estemos lejos, no es impedimento para darte unas flores amarillas, así que espero y te gusten demasiado. No olvides que te amo muchísimo, y que eres super increíble, realmente te aprecio demasiado. Gracias por todo, te amo mucho. Eres la flor que ilumina cada uno de mis días. ❤️</p>
+        
+        <!-- Tu video de YouTube añadido correctamente aquí -->
+        <div class="video-container">
+            <iframe width="100%" height="180" src="https://youtube.com" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        <div style="font-size: 12px; color: #795548; margin-top: 10px;">Dale Play para escuchar nuestra canción ✨</div>
     </div>
 
     <script>
-        // Carga la API de YouTube de forma dinámica
-        var tag = document.createElement('script');
-        tag.src = "https://youtube.com";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '0',
-                width: '0',
-                videoId: 'R03m88b7zM0', // ID oficial del video de "Nothing's Gonna Hurt You Baby"
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'loop': 1,
-                    'playlist': 'R03m88b7zM0'
-                }
-            });
-        }
-
-        function iniciarEfecto() {
-            // Activa la música instantáneamente al interactuar
-            if (player && player.playVideo) {
-                player.playVideo();
-            }
-
-            // Desvanece la pantalla de intriga
-            const intriga = document.getElementById('pantalla-intriga');
-            intriga.style.opacity = '0';
+        const emojis = ['💛', '🌻', '✨', '🌼'];
+        function crearPetalo() {
+            const petalo = document.createElement('div');
+            petalo.className = 'petalo';
+            petalo.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            petalo.style.left = Math.random() * 100 + 'vw';
+            petalo.style.fontSize = (Math.random() * 15 + 15) + 'px';
+            petalo.style.opacity = Math.random() * 0.6 + 0.4;
+            
+            const duracion = Math.random() * 3 + 3;
+            petalo.style.animationDuration = duracion + 's';
+            
+            document.body.appendChild(petalo);
             
             setTimeout(() => {
-                intriga.style.display = 'none';
-                
-                // Muestra la fase del texto romántico inicial
-                const saludo = document.getElementById('texto-inicial');
-                saludo.style.display = 'block';
-                setTimeout(() => { saludo.style.opacity = '1'; }, 50);
-
-                // Espera 3.5 segundos con el saludo inicial quieto
-                setTimeout(() => {
-                    saludo.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        saludo.style.display = 'none';
-                        
-                        // Empieza la lluvia constante de flores amarillas
-                        setInterval(soltarFlor, 120);
-
-                        // Muestra la carta final de forma fluida
-                        const carta = document.getElementById('capa-carta');
-                        carta.style.display = 'flex';
-                        setTimeout(() => { 
-                            carta.style.opacity = '1'; 
-                            
-                            // Animaciones escalonadas de las frases finales para dar drama
-                            setTimeout(() => { document.getElementById('frase1').style.opacity = '1'; }, 2000);
-                            setTimeout(() => { document.getElementById('frase2').style.opacity = '1'; }, 4500);
-                            setTimeout(() => { document.getElementById('girasol-final').style.transform = 'scale(1)'; }, 6500);
-                        }, 50);
-
-                    }, 1200);
-                }, 3500);
-            }, 1000);
+                petalo.remove();
+            }, duracion * 1000);
         }
-
-        function soltarFlor() {
-            const jardin = document.getElementById('jardin-lluvia');
-            const flor = document.createElement('div');
-            flor.classList.add('flor-cayendo');
-            
-            const emojis = ['🌻', '🌼', '💛', '✨'];
-            flor.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-            
-            flor.style.left = Math.random() * 100 + 'vw';
-            flor.style.fontSize = Math.random() * (2.3 - 1.2) + 1.2 + 'rem';
-            
-            const duracion = Math.random() * (5.5 - 3) + 3;
-            flor.style.animationDuration = duracion + 's';
-            
-            jardin.appendChild(flor);
-            setTimeout(() => { flor.remove(); }, duracion * 1000);
-        }
+        setInterval(crearPetalo, 300);
     </script>
+
 </body>
 </html>
-
